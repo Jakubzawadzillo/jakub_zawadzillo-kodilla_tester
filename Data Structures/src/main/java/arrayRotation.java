@@ -9,7 +9,6 @@ public class arrayRotation
         for (int i = 0; i < 7; i++)
         {
             firstArray[i] = i + 1;
-            System.out.println(firstArray[i]);
         }
         // n- array length and d- rotation value shift declaration
         int n = firstArray.length;
@@ -24,7 +23,16 @@ public class arrayRotation
         int substitutedArray[]= arraySubstitution(firstArray, d, n);
 
         //Rotation
-        Rotation(substitutedArray, savedNumbArray, n, d);
+        for (int i=0; i<d; i++)
+        {
+            substitutedArray[i+n-d] = savedNumbArray[i];
+        }
+
+        //Array After rotation
+        for (int j=0; j<n; j++)
+        {
+            System.out.println(substitutedArray[j]);
+        }
 
 
     }
@@ -43,19 +51,6 @@ public class arrayRotation
             toRotate[i]=toRotate[i+shift];
         }
         return toRotate;
-    }
-
-    public static int [] Rotation(int [] substituted, int [] saved, int arrayLength, int shift)
-    {
-        for (int i= arrayLength-shift; i< arrayLength; i++)
-        {
-            substituted[i]=saved[i-arrayLength-shift];
-        }
-        for (int j=0; j<arrayLength ; j++)
-        {
-            System.out.println(substituted[j]);
-        }
-        return substituted;
     }
 
 }
